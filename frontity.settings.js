@@ -1,5 +1,5 @@
 const settings = {
-  name: "hello-frontity",
+  name: "oddboll",
   state: {
     frontity: {
       url: "https://test.frontity.org",
