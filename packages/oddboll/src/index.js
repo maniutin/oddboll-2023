@@ -1,7 +1,7 @@
 import Root from "./components";
 
-const myFirstTheme = {
-  name: "my-first-theme",
+const oddbollTheme = {
+  name: "oddboll-theme",
   roots: {
     theme: Root,
   },
@@ -13,4 +13,4 @@ const myFirstTheme = {
   },
 };
 
-export default myFirstTheme;
+export default oddbollTheme;
