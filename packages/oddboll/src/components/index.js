@@ -4,6 +4,7 @@ import Link from "@frontity/components/link";
 import Switch from "@frontity/components/switch";
 
 import List from "./List";
+import Nav from "./Nav/Nav";
 import Page from "./Page";
 import Post from "./Post";
 
@@ -12,15 +13,7 @@ const Root = ({ state }) => {
 
   return (
     <>
-      <h1>Hello Frontity</h1>
-      <p>Current URL: {state.router.link}</p>
-      <nav>
-        <Link link="/">Home</Link>
-        <br />
-        <Link link="/page/2">More posts</Link>
-        <br />
-        <Link link="/about-us">About Us</Link>
-      </nav>
+      <Nav />
       <hr />
       <main>
         <Switch>
