@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import { connect } from "frontity";
+import { css } from "frontity";
 import { styled } from "frontity";
 import Link from "@frontity/components/link";
 
@@ -8,62 +9,21 @@ import Logo from "../../assets/oddboll-logo.png";
 const Nav = () => {
   return (
     <StyledNav>
-      <div>
-        <StyledLink link="/">
-          <StyledNavLogo src={Logo} alt="oddboll logo" className="nav-logo" />
-        </StyledLink>
-      </div>
+      <StyledLink link="/">
+        <StyledNavLogo src={Logo} alt="oddboll logo" />
+      </StyledLink>
       <StyledNavList>
-        <div className="nav-link">
-          <StyledLink activestyle={{ textDecoration: "underline" }} link="/">
-            Home
-          </StyledLink>
-        </div>
+        <StyledLink link="/">Home</StyledLink>
 
-        <div className="nav-link">
-          <StyledLink
-            activestyle={{ textDecoration: "underline" }}
-            link="/reviews"
-          >
-            Reviews
-          </StyledLink>
-        </div>
+        <StyledLink link="/reviews">Reviews</StyledLink>
 
-        <div className="nav-link">
-          <StyledLink
-            activestyle={{ textDecoration: "underline" }}
-            link="/interviews"
-          >
-            Interviews
-          </StyledLink>
-        </div>
+        <StyledLink link="/interviews">Interviews</StyledLink>
 
-        <div className="nav-link">
-          <StyledLink
-            activestyle={{ textDecoration: "underline" }}
-            link="/listen"
-          >
-            Listen
-          </StyledLink>
-        </div>
+        <StyledLink link="/listen">Listen</StyledLink>
 
-        <div className="nav-link">
-          <StyledLink
-            activestyle={{ textDecoration: "underline" }}
-            link="/3-word-reviews"
-          >
-            3-Word Reviews
-          </StyledLink>
-        </div>
+        <StyledLink link="/3-word-reviews">3-Word Reviews</StyledLink>
 
-        <div className="nav-link">
-          <StyledLink
-            activestyle={{ textDecoration: "underline" }}
-            link="/about"
-          >
-            About
-          </StyledLink>
-        </div>
+        <StyledLink link="/about">About</StyledLink>
       </StyledNavList>
     </StyledNav>
   );
