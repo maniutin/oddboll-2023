@@ -23,7 +23,7 @@ const Nav = () => {
 
         <StyledLink link="/3-word-reviews">3-Word Reviews</StyledLink>
 
-        <StyledLink link="/about">About</StyledLink>
+        <StyledLink link="/wordpress-trunk/about">About</StyledLink>
       </StyledNavList>
     </StyledNav>
   );
