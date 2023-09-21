@@ -1,4 +1,4 @@
-import { categoriesWidgetsHome } from "../config";
+import { categories } from "../config";
 // const MAXIMUM_POSTS = 5;
 
 const getPostsFromCategory = ({ post }, categoryId) =>
@@ -7,7 +7,7 @@ const getPostsFromCategory = ({ post }, categoryId) =>
     .filter(({ categories }) => categories.includes(parseInt(categoryId)));
 
 export const getPostsGroupedByCategory = (source) => {
-  return Object.values(categoriesWidgetsHome).reduce((acc, categoryId) => {
+  return Object.values(categories).reduce((acc, categoryId) => {
     const posts = getPostsFromCategory(source, categoryId);
     // .slice(
     //   0,

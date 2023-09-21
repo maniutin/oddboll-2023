@@ -21,7 +21,9 @@ const Nav = () => {
 
         <StyledLink link="/listen">Listen</StyledLink>
 
-        <StyledLink link="/3-word-reviews">3-Word Reviews</StyledLink>
+        <StyledLink link="/wordpress-trunk/3-word-reviews">
+          3-Word Reviews
+        </StyledLink>
 
         <StyledLink link="/wordpress-trunk/about">About</StyledLink>
       </StyledNavList>

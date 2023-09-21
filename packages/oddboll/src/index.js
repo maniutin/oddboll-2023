@@ -1,5 +1,5 @@
 import Root from "./components";
-import { categoriesWidgetsHome } from "./config";
+import { categories } from "./config";
 
 const oddbollTheme = {
   name: "oddboll-theme",
@@ -13,7 +13,7 @@ const oddbollTheme = {
     theme: {
       beforeSSR: async ({ state, actions }) => {
         await Promise.all(
-          Object.keys(categoriesWidgetsHome).map((category) =>
+          Object.keys(categories).map((category) =>
             actions.source.fetch(`/category/${category}/`)
           )
         );
