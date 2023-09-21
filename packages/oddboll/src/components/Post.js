@@ -16,10 +16,7 @@ const Post = ({ state }) => {
         <strong>Posted: </strong>
         {formattedDate}
       </p>
-      <p>
-        <strong>Author: </strong>
-        {author.name}
-      </p>
+
       <div dangerouslySetInnerHTML={{ __html: post.content.rendered }} />
     </div>
   );

@@ -3,13 +3,14 @@ import { connect } from "frontity";
 import Link from "@frontity/components/link";
 import Switch from "@frontity/components/switch";
 
-import List from "./List";
+import HomeList from "./HomeList/HomeList";
 import Nav from "./Nav/Nav";
 import Page from "./Page";
 import Post from "./Post";
 
 const Root = ({ state }) => {
   const data = state.source.get(state.router.link);
+  console.log("=== DATA: ", data);
 
   return (
     <>
@@ -17,9 +18,12 @@ const Root = ({ state }) => {
       <hr />
       <main>
         <Switch>
-          <List when={data.isArchive} />
+          <HomeList when={data.isArchive} />
           <Post when={data.isPost} />
           <Page when={data.isPage} />
+          <Post when={data.isReviews} />
+          <Post when={data.isInterviews} />
+          <Post when={data.isListen} />
         </Switch>
       </main>
     </>

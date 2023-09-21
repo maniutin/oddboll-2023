@@ -16,6 +16,23 @@ const settings = {
       state: {
         source: {
           url: "http://localhost:8888/wordpress-trunk/",
+          postTypes: [
+            {
+              type: "reviews",
+              endpoint: "reviews",
+              archive: "/reviews",
+            },
+            {
+              type: "interviews",
+              endpoint: "interviews",
+              archive: "/interviews",
+            },
+            {
+              type: "listen",
+              endpoint: "listen",
+              archive: "/listen",
+            },
+          ],
         },
       },
     },
