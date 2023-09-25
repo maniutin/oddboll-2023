@@ -13,9 +13,11 @@ const oddbollTheme = {
     theme: {
       beforeSSR: async ({ state, actions }) => {
         await Promise.all(
-          Object.keys(categories).map((category) =>
-            actions.source.fetch(`/category/${category}/`)
-          )
+          Object.keys(categories).map((category) => {
+            actions.source.fetch(`/reviews/`);
+            actions.source.fetch(`/interviews/`);
+            actions.source.fetch(`/listen/`);
+          })
         );
       },
     },

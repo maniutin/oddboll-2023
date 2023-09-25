@@ -7,7 +7,9 @@ const HomeList = ({ state }) => {
   const data = state.source.get(state.router.link);
   const postsPerCategory = getPostsGroupedByCategory(state.source);
 
-  console.log("=== POSTS PER CAT: ", postsPerCategory);
+  console.log("=== DATA: ", state.source.data);
+
+  // console.log("=== POSTS PER CAT: ", postsPerCategory);
 
   return (
     <div>
