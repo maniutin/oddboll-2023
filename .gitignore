@@ -56,3 +56,6 @@ macOS .DS_Store files
 
 # Frontity
 build
+
+# Other
+functions.php.save
