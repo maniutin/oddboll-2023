@@ -11,19 +11,43 @@ import Post from "./Post";
 const Root = ({ state }) => {
   const data = state.source.get(state.router.link);
 
+  const allPostsArr = [];
+
+  allPostsArr.push(
+    state.source.get("/reviews").items,
+    state.source.get("/interviews").items,
+    state.source.get("/listen").items
+  );
+
   return (
     <>
       <Nav />
       <hr />
       <main>
-        <Switch>
-          <HomeList when={data.isArchive} />
-          <Post when={data.isPost} />
-          <Page when={data.isPage} />
-          <Post when={data.isReviews} />
-          <Post when={data.isInterviews} />
-          <Post when={data.isListen} />
-        </Switch>
+        {state.router.link === "/" ? (
+          allPostsArr
+            .flat()
+            .sort((a, b) => a.id - b.id)
+            .reverse()
+            .map((item) => {
+              const post = state.source[item.type][item.id];
+              return (
+                <Link key={item.id} link={post.link}>
+                  {post.title.rendered}
+                  <br />
+                </Link>
+              );
+            })
+        ) : (
+          <Switch>
+            <HomeList when={data.isArchive} />
+            <Post when={data.isPost} />
+            <Page when={data.isPage} />
+            <Post when={data.isReviews} />
+            <Post when={data.isInterviews} />
+            <Post when={data.isListen} />
+          </Switch>
+        )}
       </main>
     </>
   );
