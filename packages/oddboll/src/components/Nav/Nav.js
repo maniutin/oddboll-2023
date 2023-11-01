@@ -6,26 +6,75 @@ import Link from "@frontity/components/link";
 
 import Logo from "../../assets/oddboll-logo.png";
 
-const Nav = () => {
+const Nav = ({ state }) => {
   return (
     <StyledNav>
       <StyledLink link="/">
         <StyledNavLogo src={Logo} alt="oddboll logo" />
       </StyledLink>
       <StyledNavList>
-        <StyledLink link="/">Home</StyledLink>
+        <StyledLink
+          link="/"
+          style={{
+            textDecoration: state.router.link === "/" ? "underline" : null,
+          }}
+        >
+          Home
+        </StyledLink>
 
-        <StyledLink link="/reviews">Reviews</StyledLink>
+        <StyledLink
+          link="/reviews"
+          style={{
+            textDecoration:
+              state.router.link === "/reviews/" ? "underline" : null,
+          }}
+        >
+          Reviews
+        </StyledLink>
 
-        <StyledLink link="/interviews">Interviews</StyledLink>
+        <StyledLink
+          link="/interviews"
+          style={{
+            textDecoration:
+              state.router.link === "/interviews/" ? "underline" : null,
+          }}
+        >
+          Interviews
+        </StyledLink>
 
-        <StyledLink link="/listen">Listen</StyledLink>
+        <StyledLink
+          link="/listen"
+          style={{
+            textDecoration:
+              state.router.link === "/listen/" ? "underline" : null,
+          }}
+        >
+          Listen
+        </StyledLink>
 
-        <StyledLink link="/wordpress-trunk/3-word-reviews">
+        <StyledLink
+          link="/wordpress-trunk/3-word-reviews"
+          style={{
+            textDecoration:
+              state.router.link === "/wordpress-trunk/3-word-reviews/"
+                ? "underline"
+                : null,
+          }}
+        >
           3-Word Reviews
         </StyledLink>
 
-        <StyledLink link="/wordpress-trunk/about">About</StyledLink>
+        <StyledLink
+          link="/wordpress-trunk/about"
+          style={{
+            textDecoration:
+              state.router.link === "/wordpress-trunk/about/"
+                ? "underline"
+                : null,
+          }}
+        >
+          About
+        </StyledLink>
       </StyledNavList>
     </StyledNav>
   );
@@ -64,6 +113,7 @@ const StyledLink = styled(Link)`
   padding: 2vw;
   color: black;
   text-decoration: none;
+  text-underline-offset: 0.5rem;
 `;
 
 const StyledNavLogo = styled.img`
