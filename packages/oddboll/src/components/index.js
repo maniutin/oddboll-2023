@@ -30,7 +30,7 @@ const Root = ({ state }) => {
             .sort((a, b) => a.id - b.id)
             .reverse()
             .map((item) => {
-              const post = state.source[item.type][item.id];
+              const post = state.source[item?.type][item?.id];
               return (
                 <Link key={item.id} link={post.link}>
                   {post.title.rendered}
