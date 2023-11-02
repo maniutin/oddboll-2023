@@ -5,6 +5,10 @@ import { styled } from "frontity";
 import Link from "@frontity/components/link";
 
 import Logo from "../../assets/oddboll-logo.png";
+import IgLogo from "../../assets/ig_logo.png";
+import MixcloudLogo from "../../assets/mixcloud_logo.svg";
+import ScLogo from "../../assets/sc_logo.png";
+import SpotifyLogo from "../../assets/spotify_logo.png";
 
 const Nav = ({ state }) => {
   return (
@@ -76,6 +80,29 @@ const Nav = ({ state }) => {
           About
         </StyledLink>
       </StyledNavList>
+      <StyledSocialNavList>
+        <StyledSocialLink
+          link="https://www.instagram.com/odddboll/"
+          target="_blank"
+        >
+          <StyledNavSocialLogo src={IgLogo} alt="oddboll logo" />
+        </StyledSocialLink>
+        <StyledSocialLink link="https://soundcloud.com/oddboll" target="_blank">
+          <StyledNavSocialLogo src={ScLogo} alt="oddboll logo" />
+        </StyledSocialLink>
+        <StyledSocialLink
+          link="https://www.mixcloud.com/kettle_whistle/"
+          target="_blank"
+        >
+          <StyledNavSocialLogo src={MixcloudLogo} alt="oddboll logo" />
+        </StyledSocialLink>
+        <StyledSocialLink
+          link="https://open.spotify.com/user/31vcalh4tgtzrnatjpqtkg7zqmay?si=Yz2EzNO-Q16w38udiB78nw&nd=1"
+          target="_blank"
+        >
+          <StyledNavSocialLogo src={SpotifyLogo} alt="oddboll logo" />
+        </StyledSocialLink>
+      </StyledSocialNavList>
     </StyledNav>
   );
 };
@@ -101,12 +128,14 @@ const StyledNav = styled.nav`
   -webkit-font-smoothing: antialiased;
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-between;
+  align-items: center;
 `;
 
 const StyledNavList = styled.div`
   display: flex;
   flex-direction: row;
+  height: 100%;
 `;
 
 const StyledLink = styled(Link)`
@@ -117,6 +146,29 @@ const StyledLink = styled(Link)`
 `;
 
 const StyledNavLogo = styled.img`
+  width: auto;
+  max-width: 100%;
+  max-height: 50px;
+  border: 0;
+  cursor: pointer;
+  height: fit-content;
+`;
+
+const StyledSocialNavList = styled.div`
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+`;
+
+const StyledSocialLink = styled(Link)`
+  margin-left: 2.5vw;
+  width: 25px;
+  height: 25px;
+  display: flex;
+  align-items: center;
+`;
+
+const StyledNavSocialLogo = styled.img`
   width: auto;
   max-width: 100%;
   max-height: 50px;
