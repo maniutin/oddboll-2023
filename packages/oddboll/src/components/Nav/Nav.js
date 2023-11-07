@@ -1,7 +1,5 @@
 import React, { useState } from "react";
-import { connect } from "frontity";
-import { css } from "frontity";
-import { styled } from "frontity";
+import { connect, styled } from "frontity";
 import Link from "@frontity/components/link";
 
 import Logo from "../../assets/oddboll-logo.png";

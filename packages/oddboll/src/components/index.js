@@ -1,12 +1,12 @@
 import React, { useEffect } from "react";
 import { connect } from "frontity";
-import Link from "@frontity/components/link";
 import Switch from "@frontity/components/switch";
 
 import HomeList from "./HomeList/HomeList";
 import Nav from "./Nav/Nav";
 import Page from "./Page";
 import Post from "./Post";
+import PostCard from "./PostCard/PostCard";
 
 const Root = ({ state }) => {
   const data = state.source.get(state.router.link);
@@ -31,18 +31,7 @@ const Root = ({ state }) => {
             .reverse()
             .map((item) => {
               const post = state.source[item?.type][item?.id];
-              return (
-                <Link key={item.id} link={post.link}>
-                  <div>
-                    <img
-                      src={
-                        state.source.attachment[post.featured_media]?.source_url
-                      }
-                    />
-                    {post.title.rendered}
-                  </div>
-                </Link>
-              );
+              return <PostCard key={item.id} post={post} item={item} />;
             })
         ) : (
           <Switch>
