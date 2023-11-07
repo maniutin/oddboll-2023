@@ -12,8 +12,12 @@ const HomeList = ({ state }) => {
         const post = state.source[item.type][item.id];
         return (
           <Link key={item.id} link={post.link}>
-            {post.title.rendered}
-            <br />
+            <div>
+              <img
+                src={state.source.attachment[post.featured_media]?.source_url}
+              />
+              {post.title.rendered}
+            </div>
           </Link>
         );
       })}
