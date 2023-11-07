@@ -139,7 +139,7 @@ const StyledNavList = styled.div`
 `;
 
 const StyledLink = styled(Link)`
-  padding: 2vw;
+  margin-left: 3.4vw;
   color: black;
   text-decoration: none;
   text-underline-offset: 0.5rem;
