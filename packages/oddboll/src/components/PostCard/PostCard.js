@@ -6,7 +6,7 @@ import { removeTags } from "../../helpers";
 const PostCard = ({ item, post, state }) => {
   return (
     <StyledHomeListItem key={item.id}>
-      <Link link={post.link}>
+      <Link link={post.link} style={{ marginRight: "5%" }}>
         <img src={state.source.attachment[post.featured_media]?.source_url} />
       </Link>
       <StyledHomeListItemText>

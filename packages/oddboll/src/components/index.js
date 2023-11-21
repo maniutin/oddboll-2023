@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { connect } from "frontity";
+import { connect, styled } from "frontity";
 import Switch from "@frontity/components/switch";
 
 import HomeList from "./HomeList/HomeList";
@@ -22,8 +22,7 @@ const Root = ({ state }) => {
   return (
     <>
       <Nav />
-      <hr />
-      <main>
+      <StyledMain>
         {state.router.link === "/" ? (
           allPostsArr
             .flat()
@@ -43,9 +42,13 @@ const Root = ({ state }) => {
             <Post when={data.isListen} />
           </Switch>
         )}
-      </main>
+      </StyledMain>
     </>
   );
 };
+
+const StyledMain = styled.main`
+  padding: 6vw;
+`;
 
 export default connect(Root);
