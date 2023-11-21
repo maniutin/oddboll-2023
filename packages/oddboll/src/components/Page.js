@@ -7,8 +7,11 @@ const Page = ({ state }) => {
 
   return (
     <div>
-      <h2>{page.title.rendered}</h2>
-      <div dangerouslySetInnerHTML={{ __html: page.content.rendered }} />
+      <h2 style={{ fontFamily: "Roboto" }}>{page.title.rendered}</h2>
+      <div
+        dangerouslySetInnerHTML={{ __html: page.content.rendered }}
+        style={{ fontFamily: "Lato" }}
+      />
     </div>
   );
 };

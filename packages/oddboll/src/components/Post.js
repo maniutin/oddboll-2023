@@ -11,13 +11,13 @@ const Post = ({ state }) => {
 
   return (
     <div>
-      <h2>{post.title.rendered}</h2>
-      <p>
-        <strong>Posted: </strong>
-        {formattedDate}
-      </p>
+      <h2 style={{ fontFamily: "Roboto" }}>{post.title.rendered}</h2>
+      <p style={{ fontFamily: "Poppins" }}>{formattedDate}</p>
 
-      <div dangerouslySetInnerHTML={{ __html: post.content.rendered }} />
+      <div
+        dangerouslySetInnerHTML={{ __html: post.content.rendered }}
+        style={{ fontFamily: "Lato" }}
+      />
     </div>
   );
 };

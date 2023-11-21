@@ -10,13 +10,27 @@ const PostCard = ({ item, post, state }) => {
         <img src={state.source.attachment[post.featured_media]?.source_url} />
       </Link>
       <StyledHomeListItemText>
-        <Link link={post.link}>
-          <h1>{post.title.rendered}</h1>
+        <Link
+          link={post.link}
+          style={{ color: "inherit", textDecoration: "none" }}
+        >
+          <h1 style={{ fontFamily: "Roboto", letterSpacing: "1px" }}>
+            {post.title.rendered}
+          </h1>
         </Link>
-        <p>
-          <em>{removeTags(post.excerpt.rendered)}</em>
+        <p style={{ fontFamily: "Lato", fontStyle: "italic" }}>
+          {removeTags(post.excerpt.rendered)}
         </p>
-        <Link link={post.link} style={{ marginTop: "10px" }}>
+        <Link
+          link={post.link}
+          style={{
+            fontFamily: "Poppins",
+            fontSize: "smaller",
+            marginTop: "10px",
+            color: "#fc221c",
+            textUnderlineOffset: "0.3rem",
+          }}
+        >
           Read More
         </Link>
       </StyledHomeListItemText>

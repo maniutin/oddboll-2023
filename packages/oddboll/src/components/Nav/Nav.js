@@ -134,6 +134,7 @@ const StyledNavList = styled.div`
   display: flex;
   flex-direction: row;
   height: 100%;
+  font-family: "Poppins";
 `;
 
 const StyledLink = styled(Link)`
