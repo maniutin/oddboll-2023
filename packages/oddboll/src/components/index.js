@@ -14,9 +14,9 @@ const Root = ({ state }) => {
   const allPostsArr = [];
 
   allPostsArr.push(
-    state.source.get("/reviews").items,
-    state.source.get("/interviews").items,
-    state.source.get("/listen").items
+    state.source.get("/reviews")?.items,
+    state.source.get("/interviews")?.items,
+    state.source.get("/listen")?.items
   );
 
   return (
