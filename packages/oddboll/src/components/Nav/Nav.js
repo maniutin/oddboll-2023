@@ -142,6 +142,7 @@ const StyledLink = styled(Link)`
   color: black;
   text-decoration: none;
   text-underline-offset: 0.5rem;
+  font-size: small;
 `;
 
 const StyledNavLogo = styled.img`

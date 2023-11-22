@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { connect, css, Global, styled } from "frontity";
 import HomeList from "./HomeList/HomeList";
+import Loading from "./Loading";
 import Nav from "./Nav/Nav";
 import Page from "./Page";
 import Post from "./Post";
@@ -13,15 +14,21 @@ import PoppinsLight from "../assets/fonts/Poppins-Light.ttf";
 import RobotoRegular from "../assets/fonts/Roboto-Regular.ttf";
 
 const Root = ({ state }) => {
-  const data = state.source.get(state.router.link);
+  const data = state.source?.get(state.router.link);
 
   const allPostsArr = [];
 
-  allPostsArr.push(
-    state.source.get("/reviews")?.items,
-    state.source.get("/interviews")?.items,
-    state.source.get("/listen")?.items
-  );
+  if (
+    !state.source.get("/reviews").isError &&
+    !state.source.get("/ineterviews").isError &&
+    !state.source.get("/listen").isError
+  ) {
+    allPostsArr.push(
+      state.source.get("/reviews").items,
+      state.source.get("/interviews").items,
+      state.source.get("/listen").items
+    );
+  }
 
   return (
     <>
@@ -70,6 +77,7 @@ const Root = ({ state }) => {
             })
         ) : (
           <Switch>
+            <Loading when={data.isFetching} />
             <HomeList when={data.isArchive} />
             <Post when={data.isPost} />
             <Page when={data.isPage} />
