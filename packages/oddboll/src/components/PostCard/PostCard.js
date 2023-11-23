@@ -4,10 +4,15 @@ import Link from "@frontity/components/link";
 import { removeTags } from "../../helpers";
 
 const PostCard = ({ item, post, state }) => {
+  const reg = /&#8220;|&#8221;/g;
+
   return (
     <StyledHomeListItem key={item.id}>
-      <Link link={post.link} style={{ marginRight: "5%" }}>
-        <img src={state.source.attachment[post.featured_media]?.source_url} />
+      <Link link={post.link} style={{ marginRight: "5%", width: "50%" }}>
+        <img
+          src={state.source.attachment[post.featured_media]?.source_url}
+          style={{ width: "100%" }}
+        />
       </Link>
       <StyledHomeListItemText>
         <Link
@@ -15,7 +20,7 @@ const PostCard = ({ item, post, state }) => {
           style={{ color: "inherit", textDecoration: "none" }}
         >
           <h1 style={{ fontFamily: "Roboto", letterSpacing: "1px" }}>
-            {post.title.rendered}
+            {post.title.rendered.replace(reg, '"')}
           </h1>
         </Link>
         <p style={{ fontFamily: "Lato", fontStyle: "italic" }}>

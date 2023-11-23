@@ -16,6 +16,8 @@ import RobotoRegular from "../assets/fonts/Roboto-Regular.ttf";
 const Root = ({ state }) => {
   const data = state.source?.get(state.router.link);
 
+  console.log("=== DATA: ", data);
+
   const allPostsArr = [];
 
   if (
@@ -93,6 +95,9 @@ const Root = ({ state }) => {
 
 const StyledMain = styled.main`
   padding: 6vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 `;
 
 export default connect(Root);
