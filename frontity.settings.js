@@ -10,6 +10,24 @@ const settings = {
   packages: [
     {
       name: "oddboll",
+      state: {
+        theme: {
+          menu: [
+            ["Home", "/"],
+            ["Reviews", "/blog_post_cat/reviews/"],
+            ["Interviews", "/blog_post_cat/interviews/"],
+            ["Listen", "/blog_post_cat/listen/"],
+            ["All Blog Posts", "/blog_post_cat/"],
+            ["Catalogue", "/catalogue"],
+            ["3-Word Reviews", "/3-word-reviews/"],
+            ["About Us", "/about/"],
+          ],
+          featured: {
+            showOnList: true,
+            showOnPost: true,
+          },
+        },
+      },
     },
     {
       name: "@frontity/wp-source",
@@ -18,19 +36,16 @@ const settings = {
           url: "http://localhost:8888/wordpress-trunk/",
           postTypes: [
             {
-              type: "reviews",
-              endpoint: "reviews",
-              archive: "/reviews",
+              type: "blog_post",
+              endpoint: "blog_post",
+              archive: "/blog_post_cat",
             },
+          ],
+          taxonomies: [
             {
-              type: "interviews",
-              endpoint: "interviews",
-              archive: "/interviews",
-            },
-            {
-              type: "listen",
-              endpoint: "listen",
-              archive: "/listen",
+              taxonomy: "blog_post_cat",
+              endpoint: "blog_post_cat",
+              postTypeEndpoint: "blog_post",
             },
           ],
         },
