@@ -1,0 +1,120 @@
+<?php
+/*
+Plugin Name: oddboll CPT
+Description: oddboll custom post type and taxonomy
+Version: 0.1
+Author: Nick Maniutin
+Text Domain: blog_post
+Domain Path: /languages
+License: GPLv2
+*/
+
+// to check WP is running
+defined( 'ABSPATH' ) or die( "Permission denied!" );
+
+// Register custom post type 'blog_post'
+function oddboll_create_cpt() {
+    // define labels
+	$labels = array (
+		'name' 			    => __( 'oddboll Posts','post type general name', 'blog_post' ),
+		'singular_name' 	=> __( 'oddboll Post', 'post type singular name', 'blog_post' ),
+		'name_admin_bar'	=> __( 'oddboll Posts', 'blog_post' ),
+		'add_new' 		    => __( 'Add new oddboll Post', 'blog_post' ),
+		'add_new_item' 		=> __( 'Add new oddboll Post', 'blog_post' ),
+		'edit_item' 		=> __( 'Edit oddboll Post', 'blog_post' ),
+		'new_item' 		    => __( 'New oddboll Post', 'blog_post' ),
+		'view_item' 		=> __( 'View oddboll Post', 'blog_post' )
+	);
+
+	// define args
+	$args = array (
+		'labels' 		    => $labels,
+    	'description'		=> 'Holds oddboll Post info',
+		'public' 		    => true,
+		'show_in_nav_menus' => false,
+		'menu_icon' 		=> 'dashicons-list-view',
+		'supports' 		    => array( 'title', 'editor', 'page-attributes', 'thumbnail' ),
+		'show_in_rest' 		=> true,
+		//'taxonomies'		=> array( 'category' )
+	);
+
+	register_post_type( 'blog_post', $args );
+
+}
+add_action( 'init', 'oddboll_create_cpt' );
+
+
+// Register custom taxonomy for 'blog_post'
+function blog_post_create_taxonomies() {
+
+    //define labels
+    $labels = array(
+         'name' 			    => __( 'oddboll Post Categories', 'taxonomy general name', 'blog_post' ),
+         'singular_name' 		=> __( 'Category', 'taxonomy singular name', 'blog_post' ),
+         'search_items' 		=> __( 'Search Categories', 'blog_post' ),
+         'all_items' 			=> __( 'All Categories', 'blog_post' ),
+         'edit_item'  			=> __( 'Edit Category', 'blog_post' ),
+         'update_item' 			=> __( 'Update Category', 'blog_post' ),
+         'add_new_item' 		=> __( 'Add New Category', 'blog_post' ),
+         'new_item_name' 		=> __( 'New Category', 'blog_post' ),
+         'popular_items' 		=> __( 'Popular Categories', 'blog_post' ),
+         'menu_name' 			=> __( 'oddboll Post Categories', 'blog_post' ),
+         'choose_from_most_used'=> __( 'Choose from the most used Categories', 'blog_post' ),
+         'not_found' 			=> __( 'No Categories found', 'blog_post' )
+    );
+
+    // define args
+    $args = array(
+         'hierarchical'         => false,
+         'labels' 		        => $labels,
+         'rewrite' 		        => true,
+         'show_admin_column'    => true,
+         'show_in_rest' 	    => true,
+   );
+
+   // assign the category "record" only for "record" Post Type
+   register_taxonomy( 'blog_post_cat', 'blog_post', $args );
+
+}
+add_action( 'init', 'blog_post_create_taxonomies', 0 );
+
+
+// Create shortcode [oddboll_posts] and display posts from 'blog_post' CPT
+function blog_post_post_list( $atts ){
+
+    // create the query arguments array ($args) to pass to WP_Query
+	$args = array(
+		'post_type' 		=> 'blog_post',
+		'posts_per_page'	=> '-1'
+    );
+
+    // get the posts and store array of records in $records
+    $records = new WP_Query( $args );
+
+    if ( $records->have_posts() ) {
+
+        $html = '';
+        while ( $records->have_posts() ) {
+            $records->the_post();
+            $id = get_the_ID();
+            $title = get_the_title();
+            $thumbnail = get_the_post_thumbnail($id, array(180, 180));
+            $link = get_the_permalink();
+            $html .= '<div style="display:flex">';
+            $html .= '<div style="padding-right:20px">';
+            $html .= '<a href="' . $link . '">' . $thumbnail . '</a>';
+            $html .= '</div>';
+            $html .= '<div>';
+            $html .= '<strong><p style="font-size:1.2em"><a href="' . $link . '">' . $title . '</a></p></strong>';
+            $html .= '</div>';
+            $html .= '</div>';
+        }
+        return $html;
+    } else {
+        return "Nothing found!";
+    }
+	
+	wp_reset_postdata();
+
+}
+add_shortcode( 'oddboll_posts', 'blog_post_post_list' );
