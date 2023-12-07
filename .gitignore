@@ -59,4 +59,5 @@ build
 
 # Other
 functions.php.save
+oddboll_cpt.php.save
 .vercel
